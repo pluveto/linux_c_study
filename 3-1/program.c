@@ -6,9 +6,10 @@ int main()
     float a, b, c;
     scanf("%f,%f,%f", &a, &b, &c);
     sort(&a, &b);
+    sort(&a, &c);
     sort(&b, &c);
     printf("%f %f %f\n", a, b, c);
-
+    printf("addr %p %p %p\n", &a, &b, &c);
     return 0;
 }
 
@@ -18,9 +19,11 @@ int sort(float *num1, float *num2)
     if (*num1 > *num2)
     {
         printf("before swap %f %f\n", *num1, *num2);
+        printf("before swap addr %p %p\n", num1, num2);
         float temp = *num1;
-        num1 = num2;
-        num2 = &temp;
+        *num1 = *num2;
+        *num2 = temp;
         printf("after swap %f %f\n", *num1, *num2);
+        printf("after swap addr %p %p\n", num1, num2);
     }
 }
